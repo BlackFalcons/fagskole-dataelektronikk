@@ -1,5 +1,3 @@
-#include "arduino.h"
-
 class SegmentDisplayHandler {
 public:
     static void clearDisplay(const int displayPins[8])
@@ -34,8 +32,8 @@ public:
 
 };
 
-int buttonPins[] = { 10, 11, 12, 13 };
-int segmentedDisplayPins[] = { 2, 3, 4, 5, 6, 7, 8, 9 };
+int buttonPins[] = {10, 11, 12, 13};
+int segmentedDisplayPins[] = {2, 3, 4, 5, 6, 7, 8, 9};
 int previousResult {-1};
 
 __attribute__((unused)) void setup()
@@ -57,10 +55,7 @@ __attribute__((unused)) void loop()
         i++;
     }
 
-    if (result != previousResult) // Only update lcd if the answer is updated.
-    {
-        SegmentDisplayHandler::displayHex(segmentedDisplayPins, result);
-    }
+    if (result != previousResult) SegmentDisplayHandler::displayHex(segmentedDisplayPins, result); // Only update lcd if the answer is updated.
     previousResult = result;
     delay(50); // Prevent program from eating all available memory.
 }
